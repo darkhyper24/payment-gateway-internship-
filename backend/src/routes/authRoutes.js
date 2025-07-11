@@ -8,9 +8,6 @@ router.post("/login", authController.login);
 router.post("/register", hashPasswordMiddleware, authController.register);
 router.post("/refresh-token", authController.refreshToken);
 router.post("/logout", authController.logout);
-
-router.get("/profile", authenticateToken, (req, res) => {
-  res.json({ user: req.user });
-});
+router.get("/profile", authenticateToken, authController.profile);
 
 module.exports = router;
